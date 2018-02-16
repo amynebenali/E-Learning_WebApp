@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html  lang="en" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+<title>Student's Site</title>
+
+	<h:outputStylesheet library="default" name="css/form.css" />
+<link rel="stylesheet" href="./resources/default/css/reset.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="./resources/default/css/style.css" type="text/css" media="all"/>
+
+
+<link rel="stylesheet" href="resources/default/css/reset.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="resources/default/css/style.css" type="text/css" media="all"/>
+	
+	<f:loadBundle basename="com.bundle.messages" var="msg"/>
+</h:head>
+<h:body id="page1">
+<!-- START PAGE SOURCE -->
+<div class="wrap">
+  <header>
+    <div class="container">
+      <h1><a href="#">Student's site</a></h1>
+    </div>
+  </header>
+  <div class="container">
+
+    <section id="content">
+      <div id="banner">
+        <h2>Professional <span>Online Education <span>Since 2017</span></span></h2>
+      </div>
+      
+     <h:form>
+<p:fieldset legend="Inscription" toggleable="true"   >
+		
+	
+			<h:outputLabel for="nom">Nom d'utilisateur <span class="requis">*</span> </h:outputLabel>
+			<p:inputText id="nom" value="#{etudiant.nom}" required="true" size="15" maxlength="20" requiredMessage="#{msg['inscri_etud.nom']}">
+			<f:ajax event="blur" render="nomMessage" />
+			</p:inputText>
+			<h:message id="nomMessage" for="nom" errorClass="erreur" />
+			<br />
+			
+			<h:outputLabel for="prenom">Nom de famille <span class="requis">*</span> </h:outputLabel>
+			<p:inputText id="prenom" value="#{etudiant.prenom}" required="true" size="15" maxlength="20" requiredMessage="#{msg['inscri_etud.prenom']}">
+			<f:ajax event="blur" render="prenomMessage" />
+			</p:inputText>
+			<h:message id="prenomMessage" for="prenom" errorClass="erreur" />
+			<br />
+			         	<h:outputLabel  for="groupe">Groupe<span class="requis">*</span> </h:outputLabel>
+			
+			<p:selectOneMenu id="groupe" value="#{etudiant.groupe}" required="true" requiredMessage="#{msg['inscri_etud.groupe']}">
+            <f:selectItem itemValue="Gr1" itemLabel="Gr1" />
+            <f:selectItem itemValue="Gr2" itemLabel="Gr2" />
+            <f:selectItem itemValue="Gr3" itemLabel="Gr3" />          				
+            </p:selectOneMenu>
+            <BR />
+            
+                     	<h:outputLabel  for="section">Section<span class="requis">*</span> </h:outputLabel>
+			
+			<p:selectOneMenu id="section" value="#{etudiant.branche}" required="true" requiredMessage="#{msg['inscri_etud.section']}">
+            <f:selectItem itemValue="Mecanique" itemLabel="Mecanique" />
+            <f:selectItem itemValue="Informatique" itemLabel="Informatique" />
+            <f:selectItem itemValue="Electronique" itemLabel="Electronique" />			
+            </p:selectOneMenu>
+            <BR />
+      
+			<h:outputLabel for="email">Adresse email <span class="requis">*</span></h:outputLabel>
+			<p:inputText validatorMessage="Le format de l'adresse email est invalide" id="email" value="#{etudiant.email}" required="true" size="15" maxlength="60" requiredMessage="#{msg['inscri_etud.email']}">
+			<f:ajax event="blur" render="emailMessage" />
+			 <f:validateRegex
+		       pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+			</p:inputText>
+			<h:message id="emailMessage" for="email" errorClass="erreur" />
+			<br />
+			
+			<h:outputLabel for="motdepasse">Mot de passe <span class="requis">*</span></h:outputLabel>
+			<p:password id="motdepasse" feedback="true" value="#{etudiant.password}" match="confirmation" validatorMessage=" " required="true" size="15" maxlength="20" requiredMessage="#{msg['inscri_etud.motdepasse']}" >
+			<f:ajax event="blur" render="motDePasseMessage" />
+			</p:password>
+			<h:message id="motDePasseMessage" for="motdepasse" errorClass="erreur" />
+			<br />
+			
+			<h:outputLabel for="confirmation">Confirmation du mot de passe <span class="requis">*</span>
+			</h:outputLabel>
+			<p:password id="confirmation" feedback="true" required="true" size="15" maxlength="20" requiredMessage="#{msg['inscri_etud.confirmation']}">
+			<f:ajax event="blur" render="confirmationMessage" />
+			</p:password>
+			<h:message id="confirmationMessage" for="confirmation" errorClass="erreur" />
+			<br /><br />
+			
+			<h:outputLabel for="date">Date de naissance<span class="requis">*</span> </h:outputLabel>
+			<p:calendar  id="date" value="#{etudiant.date}" required="true" mode="popup" showOn="button" size="15" requiredMessage="#{msg['inscri_etud.date']}" >
+  
+   		 	<f:ajax event="blur" render="dateMessage" /> 
+			</p:calendar>
+			<h:message id="dateMessage" for="date" errorClass="erreur" />
+			<BR />
+			 
+			<h:commandButton  type="button" value="inscription" action="#{etudiant.inscription}" target="_blank" >
+			<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+			<p:spacer height="20" />
+			<h:commandButton type="reset" value="Reset" />
+			<h:messages globalOnly="true" infoClass="info" />
+			<br />
+		</p:fieldset>
+		
+	</h:form>
+    
+    </section>
+  </div>
+</div>
+<footer>
+		<div class="footerlink">
+			<p class="lf">
+				<b> Enetcom 3TST <a href="#">Ben Ali Amine &amp; Ben Jabra Hela
+						</a> 
+				</b>
+					<p:spacer height="40" />
+					<div class="photos" > 
+				<b>REJOIGNEZ NOUS:</b>
+				
+				<a target="_blank" href="http://www.facebook.com"><img src="resources/default/images/fb.png" alt="facebook"  /></a>
+				<a target="_blank" href="http://twitter.com"> <img src="resources/default/images/twitter.png" alt="twitter"/></a>
+				
+				<a target="_blank" href="http://www.google.com/bookmarks"><img src="resources/default/images/google.png" alt="google"/></a>
+				<a target="_blank" href="http://www.linkedin.com"><img src="resources/default/images/linkedin.png" alt="linkdin"/></a>
+				
+				</div>
+			</p>
+
+
+		</div>
+
+	</footer>
+</h:body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Student's Site | Contactez-nous</title>
+	<meta charset="utf-8" />
+
+	<h:outputStylesheet library="default" name="css/form.css" />
+	<link rel="stylesheet" href="resources/default/css/reset.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="resources/default/css/style.css"
+		type="text/css" media="all" />
+
+	<link rel="stylesheet" href="../resources/default/css/reset.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../resources/default/css/style.css"
+		type="text/css" media="all" />
+	<f:loadBundle basename="com.bundle.messages" var="msg" />
+</h:head>
+<h:body id="page5">
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{authentification.checkAlreadyLoggedin}" />
+	</f:metadata>
+	<!-- START PAGE SOURCE -->
+	<div class="wrap">
+		<header>
+			<div class="container">
+				<h1>
+					<a href="#">Student's site</a>
+				</h1>
+				<nav>
+					<h:form>
+						<ul>
+							<li><a href="Home.xhtml" class="m1">Home Page</a></li>
+							
+							<li><a href="forum.xhtml" class="m3">Forum</a></li>
+							<li class="current"><a href="contact-us.xhtml" class="m4">Contactez-nous</a>
+							</li>
+							<li class="last"><h:commandLink
+									action="#{authentification.deconnection}" value="Deconnexion"
+									class="m5" /></li>
+
+
+						</ul>
+					</h:form>
+				</nav>
+				
+			</div>
+		</header>
+		<div class="container">
+			<aside>
+				<h3>Categories</h3>
+				<ul class="categories">
+					<li><span><a href="profil.xhtml">Mon profil</a></span></li>
+					<li><span><a href="allstudent.xhtml">Liste des
+								etudiants</a></span></li>
+        <li><span><a href="allteachers.xhtml">Liste des enseignants</a></span></li>
+					
+				
+				</ul>
+				<h2>
+					Fresh <span>News</span>
+				</h2>
+				<ul class="news">
+					<li><strong>Novembre 15 , 2017</strong>
+						<h4>
+							<a href="#"> L'Université Virtuelle ®(UV) </a>
+						</h4>est une alliance d'universités Tunisienne engagées à offrir des
+						programmes universitaires qu'on peut suivre à partir de n'importe
+						quel point en Tunisie ou à l'étranger.</li>
+					<li><strong>Novembre 16, 2017</strong>
+						<h4></h4> Lorsque vous vous <a href="../inscri_etud.xhtml">inscrivez</a>
+						vous pouvez choisir des cours offerts par votre professeurs
+						participants. Ainsi, vous avez plus de 20 cours à votre
+						disposition, et la liste ne cesse de s'allonger!</li>
+					<li>
+						<h4></h4> En plus de l'immense choix de cours, <a href="#">Ce
+							site </a> vous offre un espace de discussion ouvert aux participants
+						pour communiquer ensemble .</li>
+				</ul>
+				</aside>
+			<section id="content">
+				<div id="banner">
+					<h2>
+						Professional <span>Online Education <span>Since 2017</span></span>
+					</h2>
+				</div>
+				<div class="inside">
+					<h2>
+						Our <span>Contacts</span>
+					</h2>
+					<div class="address">
+						<address>
+							<strong>Zip Code:</strong>3000<br /> <strong>Country:</strong>SFAX,TUNISIA<br />
+							<strong>Telephone:</strong>+21658930908<br /> <strong>Fax:</strong>+21673360519
+							
+						</address>
+						<div class="extra-wrap">
+							
+						</div>
+					</div>
+					
+				
+	
+				</div>
+			</section>
+		</div>
+	</div>
+	<footer>
+		<div class="footerlink">
+			<p class="lf">
+				<b> Enetcom 3TST <a href="#">Ben Ali Amine &amp; Ben Jabra Hela
+						</a> 
+				</b>
+					<p:spacer height="40" />
+					<div class="photos" > 
+				<b>REJOIGNEZ NOUS:</b>
+				
+				<a target="_blank" href="http://www.facebook.com"><img src="resources/default/images/fb.png" alt="facebook"  /></a>
+				<a target="_blank" href="http://twitter.com"> <img src="resources/default/images/twitter.png" alt="twitter"/></a>
+				
+				<a target="_blank" href="http://www.google.com/bookmarks"><img src="resources/default/images/google.png" alt="google"/></a>
+				<a target="_blank" href="http://www.linkedin.com"><img src="resources/default/images/linkedin.png" alt="linkdin"/></a>
+				
+				</div>
+			</p>
+
+
+		</div>
+
+	</footer>
+</h:body>
+</html>

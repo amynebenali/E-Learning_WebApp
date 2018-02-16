@@ -1,0 +1,66 @@
+/* Général ---------------------------------------------------------
+---------------------------- */
+label, input {
+font: normal 8pt verdana, helvetica, sans-serif;
+}
+ .fieldsett {
+padding: 10px;
+border: 1px #0568CD solid;
+} 
+legend {
+font-weight: bold;
+color: #0568CD;
+}
+/* Forms -----------------------------------------------------------
+---------------------------- */
+form label {
+float: left;
+width: 200px;
+margin: 3px 0px 0px 0px;
+}
+form input {
+margin: 3px 3px 0px 0px;
+border: 1px #999 solid;
+}
+form input.sansLabel {
+margin-left: 200px;
+}
+form .requis {
+color: #c00;
+}
+
+.itemTable{   
+   border-collapse:collapse;
+   border:1px solid #000000;
+}
+
+.itemTableHeader{
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.itemTableOddRow{
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;	
+}
+
+.itemTableEvenRow{
+   text-align:center;
+   background:none repeat scroll 0 0 #D3D3D3;
+}
+
+.ui-fieldset {
+    background:url();
+    background-size: cover;
+    border: 2px #0568CD solid;
+    
+}
+.color-red {
+    color: #F00;
+}
+.color-blue 
+{ font-family: "Arial Black", Gadget, sans-serif;
+	color:#01c1f1;
+}

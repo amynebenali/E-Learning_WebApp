@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Student's Site | Forum</title>
+	<meta charset="utf-8" />
+
+	<h:outputStylesheet library="default" name="css/form.css" />
+	<link rel="stylesheet" href="resources/default/css/reset.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="resources/default/css/style.css"
+		type="text/css" media="all" />
+
+	<link rel="stylesheet" href="../resources/default/css/reset.css"
+		type="text/css" media="all" />
+	<link rel="stylesheet" href="../resources/default/css/style.css"
+		type="text/css" media="all" />
+	<f:loadBundle basename="com.bundle.messages" var="msg" />
+</h:head>
+<h:body id="page3">
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{authentification.checkAlreadyLoggedin}" />
+	</f:metadata>
+	<!-- START PAGE SOURCE -->
+	<div class="wrap">
+		<header>
+			<div class="container">
+				<h1>
+					<a href="#">Student's site</a>
+				</h1>
+				<nav>
+					<h:form>
+						<ul>
+							<li><a href="Home.xhtml" class="m1">Home Page</a></li>
+							
+							<li class="current"><a href="forum.xhtml" class="m3">Forum</a></li>
+							<li><a href="contact-us.xhtml" class="m4">Contactez-nous</a></li>
+							<li class="last"><h:commandLink
+									action="#{authentification.deconnection}" value="Deconnexion"
+									class="m5" /></li>
+
+						</ul>
+					</h:form>
+				</nav>
+			
+			</div>
+		</header>
+		<div class="container">
+			<aside>
+				<h3>Categories</h3>
+				<ul class="categories">
+					<li><span><a href="profil.xhtml">Mon profil</a></span></li>
+					<li><span><a href="allstudent.xhtml">Liste des
+								etudiants</a></span></li>
+					
+        <li><span><a href="allteachers.xhtml">Liste des enseignants</a></span></li>
+					
+				
+				</ul>
+				<h2>
+					Nouvelle <span>Publication</span>
+				</h2>
+				<ul class="news">
+
+
+					<h:form>
+						<h:outputLabel for="titre">Titre<span
+								class="requis">*</span>
+						</h:outputLabel>
+						<p:inputText id="titre" value="#{publication.titre}"
+							required="true" size="20" maxlength="20"
+							requiredMessage="#{msg['activities.titre']}">
+							<f:ajax event="blur" render="titreMessage" />
+						</p:inputText>
+						<h:message id="titreMessage" for="titre" errorClass="erreur" />
+						<br />
+
+						<h:outputLabel for="categerie">Domaine<span
+								class="requis">*</span>
+						</h:outputLabel>
+						<p:inputText id="categerie" value="#{publication.categorie}"
+							required="true" size="20" maxlength="20"
+							requiredMessage="#{msg['activities.categorie']}">
+							<f:ajax event="blur" render="categerieMessage" />
+						</p:inputText>
+						<h:message id="categerieMessage" for="categerie"
+							errorClass="erreur" />
+						<br />
+
+						<h:outputLabel for="question">Question<span
+								class="requis">*</span>
+						</h:outputLabel>
+
+						<p:inputTextarea id="question" value="#{publication.question}"
+							required="true" rows="10" cols="25"
+							requiredMessage="#{msg['activities.description']}">
+							<f:ajax event="blur" render="questionMessage" />
+						</p:inputTextarea>
+						<h:message id="questionMessage" for="question" errorClass="erreur" />
+						<BR />
+
+
+						<h:commandButton type="button" value="Publier"
+							action="#{publication.publier(authentification.id)}"
+							target="_blank">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton>
+						<p:spacer height="20" />
+						<h:commandButton type="reset" value="Reset" />
+						<h:messages globalOnly="true" infoClass="info" />
+						<br />
+
+					</h:form>
+
+
+
+				</ul>
+			</aside>
+			<section id="content">
+				<div id="banner">
+					<h2>
+						Professional <span>Online Education <span>Since 2017</span></span>
+					</h2>
+				</div>
+				<div class="inside">
+					<h:form>
+						<p:dataList type="unordered" itemType="none" paginator="true"
+							rows="5" styleClass="paginated"
+							value="#{publication.mespub(authentification.id)}" var="elem"
+							chunkSize="10">
+							<f:facet name="header">
+            Liste des Publications
+        </f:facet>
+
+							<h:panelGrid columns="2" style="width:100%"
+								columnClasses="logo,detail">
+								<p:graphicImage name="images/icon6.png" library="default" />
+
+								<p:outputPanel>
+									<h:panelGrid columns="2" cellpadding="5">
+										<h:outputText value="Titre" />
+										<h:outputText value="#{elem.titre}" style="font-weight: bold" />
+
+										<h:outputText value="Date:" />
+										<h:outputText value="#{elem.date}" style="font-weight: bold" />
+
+										<h:outputText value="Categorie:" />
+										<h:outputText value="#{elem.categorie}"
+											style="font-weight: bold" />
+
+										<h:outputText value="Question:" />
+										<h:outputText value="#{elem.question}"
+											style="font-weight: bold" />
+
+										<h:commandButton value="voir les reponses"
+											action="#{authentification.reponse(elem.id)}" />
+
+										<h:commandButton value="effacer publication"
+											action="#{publication.deletpub(elem.id)}" />
+
+									</h:panelGrid>
+								</p:outputPanel>
+							</h:panelGrid>
+						</p:dataList>
+					</h:form>
+
+				</div>
+			</section>
+		</div>
+	</div>
+	<footer>
+		<div class="footerlink">
+			<p class="lf">
+				<b> Enetcom 3TST <a href="#">Ben Ali Amine &amp; Ben Jabra Hela
+						</a> 
+				</b>
+					<p:spacer height="40" />
+					<div class="photos" > 
+				<b>REJOIGNEZ NOUS:</b>
+				
+				<a target="_blank" href="http://www.facebook.com"><img src="resources/default/images/fb.png" alt="facebook"  /></a>
+				<a target="_blank" href="http://twitter.com"> <img src="resources/default/images/twitter.png" alt="twitter"/></a>
+				
+				<a target="_blank" href="http://www.google.com/bookmarks"><img src="resources/default/images/google.png" alt="google"/></a>
+				<a target="_blank" href="http://www.linkedin.com"><img src="resources/default/images/linkedin.png" alt="linkdin"/></a>
+				
+				</div>
+			</p>
+
+
+		</div>
+
+	</footer>
+</h:body>
+</html>
